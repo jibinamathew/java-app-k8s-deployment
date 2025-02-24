@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-app
+  namespace: vulcan-jibina
+spec:
+  replicas: 2  # Number of Pods to run
+  selector:
+    matchLabels:
+      app: java-app
+  template:
+    metadata:
+      labels:
+        app: java-app
+    spec:
+      containers:
+        - name: java-app
+          image: vulcanacr.azurecr.io/java-test-app:latest  # Your ACR image
+          ports:
+            - containerPort: 8080  # Exposes port 8080 inside the container
