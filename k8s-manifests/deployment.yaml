@@ -13,6 +13,8 @@ spec:
       labels:
         app: java-app
     spec:
+      imagePullSecrets:  # Add this section
+        - name: acr-secret-jibina  # Ensure this matches your ACR secret name
       containers:
         - name: java-app
           image: vulcanacr.azurecr.io/java-test-app:latest  # Your ACR image
